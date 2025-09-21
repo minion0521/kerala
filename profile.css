@@ -1,0 +1,136 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: linear-gradient(135deg, #8bc6ec, #9599e2);
+    min-height: 100vh;
+    margin: 0;
+    padding: 40px 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #2c3e50;
+}
+
+h1 {
+    margin-bottom: 30px;
+    color: #4a90e2;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(74, 144, 226, 0.7);
+}
+
+.profiles-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    justify-content: center;
+    max-width: 900px;
+    width: 100%;
+}
+
+.box-container {
+  background: #fff;
+  max-width: 900px;
+  width: 88vw;
+  padding: 40px 28px 32px 28px;
+  border-radius: 18px;
+  box-shadow: 0 10px 32px rgba(44,62,80,0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto 40px auto;
+  min-height: 260px;
+  animation: fadeInScale 0.6s ease;
+}
+@keyframes fadeInScale {
+  0% { transform: scale(0.85); opacity: 0;}
+  100% { transform: scale(1); opacity: 1;}
+}
+@media (max-width:700px) {
+  .box-container { 
+    padding: 12vw 2vw;
+    width: 98vw;
+  }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .container, header, main {
+    max-width: 95vw;
+    padding: 15px;
+  }
+  .profile-card {
+    flex: 0 1 110px;
+  }
+  #checklist li {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .profile-card {
+    flex: 0 1 90vw;
+  }
+  .profile-image {
+    width: 90px;
+    height: 90px;
+  }
+  .login-container, header, main {
+    padding: 12px;
+    width: 96vw;
+  }
+  button {
+    font-size: 0.95rem;
+    padding: 0.7rem 1rem;
+  }
+}
+
+.profile-card {
+    width: 140px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.25s ease;
+}
+
+.profile-card:hover {
+    transform: scale(1.1);
+}
+
+.profile-image {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 4px solid #4a90e2;
+    margin-bottom: 12px;
+    box-shadow: 0 4px 15px rgba(74, 144, 226, 0.5);
+    background: #fff;
+}
+
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.profile-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.remove-btn {
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: #e74c3c;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    transition: color 0.3s ease;
+}
+
+.remove-btn:hover {
+    color: #c0392b;
+    text-decoration: underline;
+}

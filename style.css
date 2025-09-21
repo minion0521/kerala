@@ -1,0 +1,479 @@
+/* General resets and font */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #8bc6ec, #9599e2);
+  margin: 0;
+  min-height: 100vh;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Login container styling */
+.login-container {
+  background: #fff;
+  padding: 30px 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  width: 350px;
+  max-width: 95vw;
+  text-align: center;
+  animation: fadeInScale 0.7s ease forwards;
+  user-select: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Login header */
+.login-container h1 {
+  margin-bottom: 20px;
+  color: #4a90e2;
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: 1.2px;
+  text-shadow: 1px 1px 3px rgba(74, 144, 226, 0.7);
+}
+
+/* Login labels */
+.login-container label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  text-align: left;
+  font-size: 1rem;
+  color: #2c3e50;
+}
+
+/* Login inputs */
+.login-container input {
+  width: 100%;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border: 2px solid #4a90e2;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: inset 0 1px 3px rgba(74, 144, 226, 0.2);
+}
+
+/* Input focus */
+.login-container input:focus {
+  border-color: #2c6cc4;
+  box-shadow: 0 0 8px #2c6cc4aa;
+}
+
+/* Buttons in login */
+.login-container button {
+  margin-top: 25px;
+  padding: 14px 0;
+  width: 100%;
+  font-size: 1.15rem;
+  border: none;
+  border-radius: 10px;
+  background: #4a90e2;
+  color: white;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(74, 144, 226, 0.6);
+  transition: background-color 0.3s ease, transform 0.15s ease;
+  user-select: none;
+}
+
+/* Button hover */
+.login-container button:hover {
+  background-color: #2c6cc4;
+  transform: scale(1.05);
+}
+
+/* Profile list */
+#profile-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+  max-height: 220px;
+  overflow-y: auto;
+  border-top: 1px solid #ddd;
+  border-radius: 0 0 12px 12px;
+  box-shadow: inset 0 2px 8px rgba(74, 144, 226, 0.1);
+}
+
+/* Profile list items */
+#profile-list li {
+  padding: 12px 15px;
+  background: #e7f0ff;
+  margin-bottom: 10px;
+  border-radius: 9px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #2c3e50;
+  transition: background 0.3s ease, transform 0.15s ease;
+  user-select: none;
+  box-shadow: 0 2px 6px rgba(74, 144, 226, 0.2);
+}
+
+/* List item hover */
+#profile-list li:hover {
+  background: #c1d3f8;
+  transform: scale(1.03);
+}
+
+/* Dashboard header */
+header {
+  width: 600px;
+  max-width: 95vw;
+  background: #fff;
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: fadeInDown 0.6s ease forwards;
+  color: #4a90e2;
+  font-weight: 700;
+  letter-spacing: 1px;
+  user-select: none;
+}
+
+/* Dashboard main */
+main {
+  width: 600px;
+  max-width: 95vw;
+  background: #fff;
+  border-radius: 0 0 12px 12px;
+  padding: 30px 30px 40px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  animation: fadeInUp 0.6s ease forwards;
+  user-select: none;
+}
+
+/* Profile info text */
+#profile-info {
+  font-size: 1.2rem;
+  color: #2c3e50;
+}
+
+/* Logout button */
+#logout {
+  background: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+  letter-spacing: 0.8px;
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.8);
+  user-select: none;
+}
+
+/* Logout hover */
+#logout:hover {
+  background: #c0392b;
+  box-shadow: 0 0 12px rgba(192, 57, 43, 0.9);
+}
+
+/* Category navigation section */
+#categories {
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+/* Navigation buttons */
+#categories button {
+  background: #4a90e2;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  padding: 12px 22px;
+  margin-right: 15px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.15s ease;
+  box-shadow: 0 4px 15px rgba(74, 144, 226, 0.6);
+  user-select: none;
+}
+
+/* Disabled button styling */
+#categories button:disabled {
+  background: #a1c3f7;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Buttons hover */
+#categories button:not(:disabled):hover {
+  background: #2c6cc4;
+  transform: scale(1.05);
+}
+
+/* Current category name text */
+#current-category-name {
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #2c3e50;
+  user-select: none;
+}
+
+/* Checklist container */
+#checklist ul {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+/* Checklist items */
+#checklist li {
+  margin: 15px 0;
+  font-size: 1.15rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+/* Checklist label spacing */
+#checklist label {
+  margin-left: 14px;
+  color: #2c3e50;
+}
+
+/* Checkbox styling */
+input[type="checkbox"] {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,0.1));
+  transition: transform 0.15s ease, box-shadow 0.3s ease;
+}
+
+/* Checkbox hover */
+input[type="checkbox"]:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 5px 2px #4a90e2aa;
+}
+
+/* Animations */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 650px) {
+  header, main {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .login-container {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  #categories button {
+    padding: 10px 15px;
+    font-size: 1rem;
+    margin-right: 10px;
+  }
+  
+  #current-category-name {
+    font-size: 1.1rem;
+    margin-top: 15px;
+  }
+  
+  #checklist li {
+    font-size: 1rem;
+  }
+}
+/* Tablet */
+@media (max-width: 900px) {
+  .container, header, main {
+    max-width: 95vw;
+    padding: 15px;
+  }
+  .profile-card {
+    flex: 0 1 110px;
+  }
+  #checklist li {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .profile-card {
+    flex: 0 1 90vw;
+  }
+  .profile-image {
+    width: 90px;
+    height: 90px;
+  }
+  .login-container, header, main {
+    padding: 12px;
+    width: 96vw;
+  }
+  button {
+    font-size: 0.95rem;
+    padding: 0.7rem 1rem;
+  }
+}
+body {
+  font-size: 16px; /* base font size */
+}
+
+h1 {
+  font-size: 2rem; /* scales well */
+}
+
+button {
+  padding: 0.8rem 1.2rem;
+  font-size: 1rem;
+}
+.profiles-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem 3rem;
+  justify-content: center;
+}
+.profile-card {
+  flex: 0 1 140px; /* fixed basis, flexible shrink */
+}
+.container {
+  max-width: 900px;
+  width: 90vw; /* adapts to viewport width */
+  margin: 0 auto;
+  padding: 20px;
+}
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(135deg, #8bc6ec, #9599e2);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.dashboard-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+  margin: auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* Sidebar/navigation */
+main {
+  background: #fff;
+  border-radius: 0 0 12px 12px;
+  padding: 30px 30px 40px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  flex: 2 1 480px;
+  min-width: 300px;
+  margin-left: 0;
+}
+
+/* Header panel (sidebar look on desktop, top bar on mobile) */
+header {
+  background: #fff;
+  border-radius: 12px 12px 12px 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+  padding: 40px 30px 30px;
+  min-width: 320px;
+  max-width: 380px;
+  margin-right: 0;
+  margin-bottom: 0;
+  box-sizing: border-box;
+  flex: 1 1 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* Responsive layout: stack on mobile/tablet instead of side-by-side */
+@media (max-width: 900px) {
+  .dashboard-wrapper {
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+  }
+  header, main {
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    border-radius: 12px 12px 0 0;
+  }
+}
+
+/* On very small screens: reduce padding and font sizes */
+@media (max-width: 600px) {
+  header, main {
+    padding: 20px 10px;
+    font-size: 1rem;
+  }
+  #categories button {
+    padding: 8px 12px;
+    font-size: 0.93rem;
+    margin-bottom: 8px;
+  }
+  #current-category-name {
+    font-size: 1rem;
+    margin-top: 8px;
+  }
+}
+@media (max-width: 600px) {
+  .dashboard-wrapper {
+    flex-direction: column;
+  }
+  header {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 12px;
+    max-width: 100%;
+    min-width: 0;
+    border-radius: 12px 12px 0 0;
+  }
+}
+

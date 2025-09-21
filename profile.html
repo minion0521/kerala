@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saved Profiles</title>
+  <link rel="stylesheet" href="profile.css" />
+  <style>
+    body {
+      background: linear-gradient(135deg, #8bc6ec, #9599e2);
+      min-height: 100vh;
+      margin: 0;
+      padding: 40px 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #2c3e50;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      color: #4a90e2;
+      font-weight: 700;
+      text-shadow: 1px 1px 3px rgba(74, 144, 226, 0.7);
+      margin-bottom: 38px;
+      font-size: 2.1rem;
+      letter-spacing: 1px;
+    }
+    .box-container {
+      background: white;
+      padding: 40px 30px 30px 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 35px rgba(0, 0, 0, 0.13);
+      max-width: 850px;
+      width: 90vw;
+      min-height: 230px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto 40px auto;
+      user-select: none;
+      animation: fadeInScale 0.7s cubic-bezier(.34,1.56,.64,1) forwards;
+    }
+    .profiles-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 36px 52px;
+      justify-content: center;
+      width: 100%;
+    }
+    .profile-card {
+      width: 148px;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.25s cubic-bezier(.34,1.56,.64,1);
+    }
+    .profile-card:hover {
+      transform: scale(1.09);
+      box-shadow: 0 8px 24px rgba(74, 144, 226, 0.12);
+    }
+    .profile-image {
+      width: 138px;
+      height: 138px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #4a90e2;
+      margin-bottom: 13px;
+      box-shadow: 0 4px 15px rgba(74, 144, 226, 0.14);
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .profile-name {
+      font-size: 1.13rem;
+      font-weight: 700;
+      color: #395985;
+      margin-bottom: 3px;
+      letter-spacing: 0.3px;
+    }
+    .remove-btn {
+      margin-top: 3px;
+      font-size: 0.9rem;
+      color: #e74c3c;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s;
+    }
+    .remove-btn:hover {
+      color: #c0392b;
+      text-decoration: underline;
+    }
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.8);}
+      to   { opacity: 1; transform: scale(1);}
+    }
+    /* Responsive adjustments */
+    @media (max-width: 700px) {
+      .box-container { padding: 16px 8px; }
+      .profiles-container { gap: 32px 14px; }
+      .profile-card { width: 93vw; max-width: 160px;}
+    }
+    @media (max-width: 480px) {
+      .box-container { padding: 7vw 0; min-width: 0; width: 97vw;}
+      .profile-card { width: 94vw; max-width: 140px;}
+    }
+  </style>
+</head>
+<body>
+   
+  <div class="box-container">
+    <h1>Saved Profiles</h1>
+    <div class="profiles-container" id="profiles-container"></div>
+  </div>
+  <script>
+    const profilesContainer = document.getElementById('profiles-container');
+    const humanImages = [
+      'https://randomuser.me/api/portraits/men/32.jpg',
+      'https://randomuser.me/api/portraits/women/44.jpg',
+      'https://randomuser.me/api/portraits/men/56.jpg',
+      'https://randomuser.me/api/portraits/women/65.jpg',
+      'https://randomuser.me/api/portraits/men/71.jpg',
+      'https://randomuser.me/api/portraits/women/23.jpg',
+      'https://randomuser.me/api/portraits/men/15.jpg',
+      'https://randomuser.me/api/portraits/women/12.jpg'
+    ];
+
+    function loadProfiles() {
+      const profiles = JSON.parse(localStorage.getItem('profiles') || '[]');
+      profilesContainer.innerHTML = '';
+
+      profiles.forEach((name, index) => {
+        const card = document.createElement('div');
+        card.className = 'profile-card';
+
+        const imgDiv = document.createElement('div');
+        imgDiv.className = 'profile-image';
+
+        const img = document.createElement('img');
+        img.src = humanImages[index % humanImages.length];
+        img.alt = `${name} Profile Picture`;
+
+        imgDiv.appendChild(img);
+        card.appendChild(imgDiv);
+
+        const profName = document.createElement('div');
+        profName.className = 'profile-name';
+        profName.textContent = name;
+        card.appendChild(profName);
+
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'remove-btn';
+        removeBtn.textContent = 'Remove';
+        removeBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          if (confirm(`Remove profile "${name}"?`)) {
+            removeProfile(name);
+          }
+        });
+        card.appendChild(removeBtn);
+
+        card.addEventListener('click', () => {
+          localStorage.setItem('currentUser', name);
+          window.location.href = 'dashboard.html';
+        });
+
+        profilesContainer.appendChild(card);
+      });
+
+      if (profiles.length === 0) {
+        profilesContainer.innerHTML = '<p>No saved profiles found.</p>';
+      }
+    }
+
+    function removeProfile(name) {
+      let profiles = JSON.parse(localStorage.getItem('profiles') || '[]');
+      profiles = profiles.filter(p => p !== name);
+      localStorage.setItem('profiles', JSON.stringify(profiles));
+      localStorage.removeItem(`checklist_${name}`);
+
+      const currentUser = localStorage.getItem('currentUser');
+      if (currentUser === name) {
+        localStorage.removeItem('currentUser');
+      }
+      loadProfiles();
+    }
+
+    loadProfiles();
+  </script>
+</body>
+</html>
